@@ -1,5 +1,5 @@
 ### EX5 Information Retrieval Using Boolean Model in Python
-### DATE: 
+### DATE:13/02/2026
 ### AIM: To implement Information Retrieval Using Boolean Model in Python.
 ### Description:
 <div align = "justify">
@@ -22,13 +22,14 @@ The Boolean model in Information Retrieval (IR) is a fundamental model used for 
     <p>c) For each term in the query, it retrieves documents containing that term and performs Boolean operations (AND, OR, NOT) based on the query's structure.
 
 ### Program:
+```
+import numpy as np
+import pandas as pd
 
-    import numpy as np
-    import pandas as pd
-    class BooleanRetrieval:
-        def __init__(self):
-            self.index = {}
-            self.documents_matrix = None
+class BooleanRetrieval:
+    def _init_(self):
+        self.index = {}
+        self.documents_matrix = None
 
     def index_document(self, doc_id, text):
         terms = text.lower().split()
@@ -49,9 +50,9 @@ The Boolean model in Information Retrieval (IR) is a fundamental model used for 
         for i, (doc_id, text) in enumerate(documents.items()):
             doc_terms = text.lower().split()
             for term in doc_terms:
-                if term in self.index:
+                if term in terms:
                     term_id = terms.index(term)
-                    self.documents_matrix[i, term_id] = 1
+                    self.documents_matrix[i][term_id] = 1
 
     def print_documents_matrix_table(self):
         df = pd.DataFrame(self.documents_matrix, columns=self.index.keys())
@@ -62,32 +63,70 @@ The Boolean model in Information Retrieval (IR) is a fundamental model used for 
         print(list(self.index.keys()))
 
     def boolean_search(self, query):
-        # TYPE YOUR CODE HERE
+        query = query.lower().split()
+        all_docs = set()
 
-if __name__ == "__main__":
-    indexer = BooleanRetrieval()
+        for docs in self.index.values():
+            all_docs = all_docs.union(docs)
 
-    documents = {
-        1: "Python is a programming language",
-        2: "Information retrieval deals with finding information",
-        3: "Boolean models are used in information retrieval"
-    }
+        result = None
+        operator = None
 
-    for doc_id, text in documents.items():
-        indexer.index_document(doc_id, text)
+        for word in query:
+            if word in ["and", "or", "not"]:
+                operator = word
+            else:
+                docs = self.index.get(word, set())
 
-    indexer.create_documents_matrix(documents)
-    indexer.print_documents_matrix_table()
-    indexer.print_all_terms()
+                if result is None:
+                    if operator == "not":
+                        result = all_docs - docs
+                    else:
+                        result = docs
+                else:
+                    if operator == "and":
+                        result = result & docs
+                    elif operator == "or":
+                        result = result | docs
+                    elif operator == "not":
+                        result = result - docs
 
-    query = input("Enter your boolean query: ")
-    results = indexer.boolean_search(query)
-    if results:
-        print(f"Results for '{query}': {results}")
-    else:
-        print("No results found for the query.")
+        return result
 
+
+documents = {
+    1: "Python is a programming language",
+    2: "Information retrieval deals with finding information",
+    3: "Boolean models are used in information retrieval"
+}
+
+indexer = BooleanRetrieval()
+
+for doc_id, text in documents.items():
+    indexer.index_document(doc_id, text)
+
+indexer.create_documents_matrix(documents)
+indexer.print_documents_matrix_table()
+indexer.print_all_terms()
+
+query = input("Enter your boolean query: ")
+results = indexer.boolean_search(query)
+
+if results:
+    print(f"Results for '{query}': {results}")
+else:
+    print("No results found for the query.")
+```
 
 ### Output:
+![WhatsApp Image 2026-02-13 at 4 22 17 PM (3)](https://github.com/user-attachments/assets/e5ce8f72-8b8a-4d3b-afec-aff2b1310f1a)
+![WhatsApp Image 2026-02-13 at 4 22 17 PM (2)](https://github.com/user-attachments/assets/eca1ae5e-be2e-463b-9108-34d1e24706b7)
+![WhatsApp Image 2026-02-13 at 4 22 16 PM (1)](https://github.com/user-attachments/assets/7feaa2ca-0eca-423f-b3a8-5ed970e2d1d4)
+![WhatsApp Image 2026-02-13 at 4 22 17 PM (1)](https://github.com/user-attachments/assets/39a355e1-811c-48a1-be95-5237fb720b50)
+
+
+
+
+
 
 ### Result:
