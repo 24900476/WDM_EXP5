@@ -119,9 +119,26 @@ else:
 ```
 
 ### Output:
+
+
 ![WhatsApp Image 2026-02-13 at 4 22 17 PM (3)](https://github.com/user-attachments/assets/e5ce8f72-8b8a-4d3b-afec-aff2b1310f1a)
+
+
+
+
+
 ![WhatsApp Image 2026-02-13 at 4 22 17 PM (2)](https://github.com/user-attachments/assets/eca1ae5e-be2e-463b-9108-34d1e24706b7)
+
+
+
+
+
 ![WhatsApp Image 2026-02-13 at 4 22 16 PM (1)](https://github.com/user-attachments/assets/7feaa2ca-0eca-423f-b3a8-5ed970e2d1d4)
+
+
+
+
+
 ![WhatsApp Image 2026-02-13 at 4 22 17 PM (1)](https://github.com/user-attachments/assets/39a355e1-811c-48a1-be95-5237fb720b50)
 
 
@@ -129,4 +146,13 @@ else:
 
 
 
+![WhatsApp Image 2026-02-16 at 8 22 31 AM](https://github.com/user-attachments/assets/9f005a5c-a6c9-4e3a-a812-8edee31bdb07)
+
+
+
+
+
+
+
 ### Result:
+ Thus the program for Information Retrieval Using Boolean Model in Python is successfully executed.
